@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calculadora MedNutri</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header><h1>Calculadora MedNutri</h1><p>Cálculo de necessidades diárias</p></header>
+<main>
+  <div class="tabs" role="tablist" aria-label="Tipo de cálculo">
+    <button class="tab" role="tab" aria-selected="true" aria-controls="tab1" id="btn1">Uma ração</button>
+    <button class="tab" role="tab" aria-selected="false" aria-controls="tab2" id="btn2">Comparar duas rações</button>
+  </div>
+
+  <section class="panel active" id="tab1" role="tabpanel" aria-labelledby="btn1">
+    <h2 class="section-title">Dados do animal</h2>
+    <form id="form1" novalidate>
+      <div class="form-grid">
+        <div><label for="species1">Espécie</label><select id="species1" required><option value="cao">Cão</option><option value="gato">Gato</option></select></div>
+        <div><label for="pa1">Peso do animal (kg)</label><input id="pa1" type="number" min="0.01" step="any" required placeholder="Ex.: 12,5"></div>
+        <div><label for="age1">Idade</label><select id="age1"><option value="1">Jovem</option><option value="2" selected>Adulto</option><option value="3">Idoso</option></select></div>
+        <div><label for="ecc1">Escore de Condição Corporal (1 a 9)</label><select id="ecc1"><option value="">Selecione</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option></select></div>
+        <div><label for="activity1">Atividade</label><select id="activity1"><option value="1">Ativo</option><option value="2">Inativo</option></select></div>
+      </div>
+      <h2 class="section-title" style="margin-top:24px">Dados da ração (Verificar rótulo)</h2>
+      <div class="form-grid">
+        <div><label for="em">Energia metabolizável (EM, kcal/kg)</label><input id="em" type="number" min="0.01" step="any" required></div>
+        <div><label for="pba">Proteína bruta (PBA, g/kg)</label><input id="pba" type="number" min="0" max="1000" step="1" required></div>
+        <div><label for="eea">Extrato etéreo (EEA, g/kg)</label><input id="eea" type="number" min="0" max="1000" step="1" required></div>
+      </div>
+      <div class="error" id="error1" role="alert"></div>
+      <div class="actions"><button class="calculate" type="submit">Calcular</button><button class="reset" type="reset">Limpar dados</button></div>
+    </form>
+    <div class="results" id="results1" aria-live="polite"></div>
+  </section>
+
+  <section class="panel" id="tab2" role="tabpanel" aria-labelledby="btn2">
+    <h2 class="section-title">Dados do animal</h2>
+    <form id="form2" novalidate>
+      <div class="form-grid">
+        <div><label for="species2">Espécie</label><select id="species2"><option value="cao">Cão</option><option value="gato">Gato</option></select></div>
+        <div><label for="pa2">Peso do animal (kg)</label><input id="pa2" type="number" min="0.01" step="any" required placeholder="Ex.: 12,5"></div>
+        <div><label for="age2">Idade</label><select id="age2"><option value="1">Jovem</option><option value="2" selected>Adulto</option><option value="3">Idoso</option></select></div>
+        <div><label for="ecc2">Escore de Condição Corporal (1 a 9)</label><select id="ecc2"><option value="">Selecione</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option></select></div>
+        <div><label for="activity2">Atividade</label><select id="activity2"><option value="1">Ativo</option><option value="2">Inativo</option></select></div>
+      </div>
+      <h2 class="section-title" style="margin-top:24px">Dados das rações</h2>
+      <div class="form-grid">
+        <div><label for="em1">Ração 1 — EM (kcal/kg)</label><input id="em1" type="number" min="0.01" step="any" required></div>
+        <div><label for="pba1">Ração 1 — proteína bruta (g/kg)</label><input id="pba1" type="number" min="0" max="1000" step="1" required></div>
+        <div><label for="eea1">Ração 1 — extrato etéreo (g/kg)</label><input id="eea1" type="number" min="0" max="1000" step="1" required></div>
+        <br>
+        <div><label for="em2">Ração 2 — EM (kcal/kg)</label><input id="em2" type="number" min="0.01" step="any" required></div>
+        <div><label for="pba2">Ração 2 — proteína bruta (g/kg)</label><input id="pba2" type="number" min="0" max="1000" step="1" required></div>
+        <div><label for="eea2">Ração 2 — extrato etéreo (g/kg)</label><input id="eea2" type="number" min="0" max="1000" step="1" required></div>
+      </div>
+      <div class="error" id="error2" role="alert"></div>
+      <div class="actions"><button class="calculate" type="submit">Comparar rações</button><button class="reset" type="reset">Limpar dados</button></div>
+    </form>
+    <div class="results" id="results2" aria-live="polite"></div>
+  </section>
+</main>
+<script src="script.js" defer></script>
+</body></html>
